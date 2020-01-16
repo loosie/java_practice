@@ -1,7 +1,7 @@
 package classpart;
 
 public class Student {
-// public : 立辟 力绢
+	// public : 立辟 力绢
 	public int studentID;
 	public String studentName;
 	public String address;

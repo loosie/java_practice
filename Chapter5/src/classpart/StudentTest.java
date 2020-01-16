@@ -9,7 +9,7 @@ public class StudentTest {
 		studentLee.address = "서울";
 		
 		studentLee.showStudentInfo();
-//		""문자열 , '' 문자
+		//""문자열 , '' 문자
 	}
 
 }
