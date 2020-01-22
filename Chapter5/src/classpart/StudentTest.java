@@ -10,6 +10,16 @@ public class StudentTest {
 		
 		studentLee.showStudentInfo();
 		//""문자열 , '' 문자
+		
+		
+		Student studentKim = new Student();
+		studentKim.studentName = "김유신";
+		studentKim.address = "경주";
+		
+		studentKim.showStudentInfo();
+		
+		System.out.println(studentLee);
+		System.out.println(studentKim);
 	}
 
 }
