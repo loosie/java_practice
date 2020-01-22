@@ -14,4 +14,11 @@ public class Student {
 			return studentName;
 	}
 
+	
+	public static void main(String[] args) {
+		
+		Student studentPark = new Student();
+		studentPark.studentName = "ÀÌÁ¾¿ø";
+		studentPark.showStudentInfo();
+	}
 }
