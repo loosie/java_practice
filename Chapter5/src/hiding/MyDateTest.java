@@ -11,5 +11,9 @@ public class MyDateTest {
 		
 		
 		date.showDate();
+		
+		MyDate date2 =new MyDate();
+		date2.setYear(2002);
+		
 	}
 }
