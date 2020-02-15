@@ -22,6 +22,14 @@ class Student{
 		}
 		return false;
 	}
+
+	@Override
+	public int hashCode() {
+		return studentNum;
+	}
+	
+	
+	
 }
 
 public class EqualsTest {
@@ -38,6 +46,7 @@ public class EqualsTest {
 		
 		*/
 		
+		
 		Student Lee = new Student(100,"이종원");
 		Student Lee2 = Lee; 
 		Student Jong = new Student(100,"이종원");
@@ -46,6 +55,20 @@ public class EqualsTest {
 		
 //		equals 오버라이딩으로 재정의
 		System.out.println(Lee.equals(Jong));
+		
+		System.out.println(Lee.hashCode());
+		
+		
+		
+		Integer i1 = 100;
+		Integer i2 = new Integer(100);
+		
+		System.out.println(i1.equals(i2));
+		System.out.println(i1.hashCode());
+		System.out.println(i2.hashCode());
+		
+		System.out.println(System.identityHashCode(i1));
+		System.out.println(System.identityHashCode(i2));
 		
 		
 //		메모리가 달라도 주민번호나 학번이나 사번이 같으면 같은 취급을 하여 오류 발생방지
