@@ -17,3 +17,4 @@ public class ConsoleTest {
 		System.out.println(password);
 	}
 }
+ 
