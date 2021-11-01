@@ -4,7 +4,7 @@
 2.  `Chapter2` 변수와 자료형
 3.  `Chapter3` 연산자
 4.  `Chapter4` 제어문
-5.  `Chapter5` 클래스와 객
+5.  `Chapter5` 클래스와 객체 
 6.  `Chapter6` 배열
 7.  `Chapter7` 상속과 다형성
 8.  `Chapter8` 추상 클래스
