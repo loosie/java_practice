@@ -12,4 +12,4 @@
 - [whiteship/live-study](https://github.com/whiteship/live-study) 
 
 ### 3. 자바의 정석 1,2권
-- 1, 2권 정독 후 복습 겸 `빈틈을 채워주는 자바 시리즈` [개발 블로그](https://loosie.tistory.com/470?category=964815)  에 업로드 
+- 1, 2권 정독 후 복습 겸 `빈틈을 채워주는 자바 시리즈` [개발 블로그](https://loosie.tistory.com/search/%EB%B9%88%ED%8B%88%EC%9D%84%20%EC%B1%84%EC%9B%8C%EC%A3%BC%EB%8A%94%20%EC%9E%90%EB%B0%94)  에 업로드 
