@@ -1,16 +1,16 @@
-public class ThreadEx4 {
-    public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
+import javax.swing.*;
 
-        for(int i=0; i<300; i++){
-            System.out.printf("%s", new String("-"));
-        }
-        System.out.print("소요시간1:"+ (System.currentTimeMillis()-startTime));
+public class ThreadEx6 {
+    public static void main(String[] args) throws Exception{
+        String input = JOptionPane.showInputDialog("아무 값이나 입력하세요.");
+        System.out.println("입력하신 값은 " + input + "입니다.");
 
-        for(int i=0; i<300; i++){
-            System.out.printf("%s", new String("|"));
+        for(int i=10; i>0; i--){
+            System.out.println(i);
+            try{
+                Thread.sleep(1000); // 1초간 시간을 지연한다.
+            }catch (Exception e){}
         }
-        System.out.print("소요시간2:"+ (System.currentTimeMillis()-startTime));
 
     }
 }
