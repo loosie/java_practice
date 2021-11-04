@@ -1,39 +1,52 @@
-// synchronized x
-public class ThreadEx21 {
+// join()
+public class ThreadEx20 {
     public static void main(String[] args){
-        Runnable r = new RunnableEx21();
-        new Thread(r).start(); // ThreadGroup()에 의해 참조되므로 gc대상이 아니다.
-        new Thread(r).start(); // ThreadGroup()에 의해 참조되므로 gc대상이 아니다.
+        ThreadEx20_1 gc = new ThreadEx20_1();
+        gc.setDaemon(true);
+        gc.start();
+
+        int requiredMemory = 0;
+        for(int i=0; i<20; i++){
+            requiredMemory = (int)(Math.random()*10)*20;
+
+            // 필요한 메모리가 사용할 수 있는 양보다 크거나 전체 메모리의 60% 이상을
+            // 사용했을 경우 gc를 깨운다.
+            if(gc.freeMemory() < requiredMemory
+                || gc.freeMemory() < gc.totalMemory()*0.4){
+                gc.interrupt(); // 잠자고 있는 쓰레드 gc를 깨운다.
+                try{
+                    gc.join(100);
+                }catch (InterruptedException e){}
+            }
+
+            gc.usedMemory += requiredMemory;
+            System.out.println("usedMemory:" + gc.usedMemory);
+        }
     }
 }
 
-class Account {
-    private int balance = 1000;
+class ThreadEx20_1 extends Thread{
+    final static int MAX_MEMORY = 1000;
+    int usedMemory = 0;
 
-    public int getBalance() {
-        return balance;
-    }
-
-    public void withdraw(int money){
-        if(balance >= money){
+    public void run(){
+        while(true){
             try{
-                Thread.sleep(1000);
-            }catch (InterruptedException e){}
-            balance-= money;
+                Thread.sleep(10*1000);
+            }catch (InterruptedException e){
+                System.out.println("Awaken by interrupt().");
+            }
+
+            gc();
+            System.out.println("Garbage Collected. Free Memory : "+ freeMemory());
         }
     }
-}
 
-
-class RunnableEx21 implements Runnable {
-    Account acc = new Account();
-    public void run() {
-        while(acc.getBalance()>0){
-            // 100, 200, 300중의 한 값을 임의로 선택해서 출금(withdraw)
-            int money = (int)(Math.random()*3+1)*100;
-            acc.withdraw(money);
-            System.out.println("balance:"+acc.getBalance());
-        }
-
+    public void gc(){
+        usedMemory -= 300;
+        if(usedMemory<0) usedMemory=0;
     }
+
+    public int totalMemory() { return MAX_MEMORY;}
+    public int freeMemory() { return MAX_MEMORY-usedMemory; }
 }

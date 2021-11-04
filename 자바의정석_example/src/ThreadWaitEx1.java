@@ -1,82 +1,38 @@
-import java.util.ArrayList;
-
-public class ThreadWaitEx1 {
-    public static void main(String[] args) throws Exception{
-        Table1 table = new Table1(); // 여러 쓰레드가 공유하는 객체
-
-        new Thread(new Cook1(table), "COOK1").start();
-        new Thread(new Customer1(table, "donut"), "CUST1").start();
-        new Thread(new Customer1(table, "donut"), "CUST2").start();
-        new Thread(new Customer1(table, "donut"), "CUST3").start();
-        new Thread(new Customer1(table, "donut"), "CUST4").start();
-        new Thread(new Customer1(table, "burger"), "CUST5").start();
-
-        Thread.sleep(100); // 0.1초 후 강제 종료시킨다.
-        System.exit(0); // 프로그램 전체를 종료. (모든 쓰레드가 종료됨)
+// synchronized o
+public class ThreadEx22 {
+    public static void main(String[] args){
+        Runnable r = new RunnableEx22();
+        new Thread(r).start(); // ThreadGroup()에 의해 참조되므로 gc대상이 아니다.
+        new Thread(r).start(); // ThreadGroup()에 의해 참조되므로 gc대상이 아니다.
     }
 }
 
+class Account2 {
+    private int balance = 1000; // private으로 해야 동기화가 의미가 있다.
 
-class Customer1 implements Runnable{
-    private Table1 table;
-    private String food;
-
-    Customer1(Table1 table, String food){
-        this.table = table;
-        this.food = food;
+    public int getBalance() {
+        return balance;
     }
 
-    public void run(){
-        while(true){
-            try { Thread.sleep(10); } catch (InterruptedException e){}
-            String name = Thread.currentThread().getName();
-
-            if(eatFood()){
-                System.out.println(name +" ate a " + food);
-            }else{
-                System.out.println(name +" failed to eat. :(");
-            }
-        }
-    }
-
-    boolean eatFood(){ return table.remove(food); }
-}
-
-class Cook1 implements Runnable{
-    private Table1 table;
-    Cook1(Table1 table) { this.table = table; }
-    public void run(){
-        while(true) {
-            //임의의 요리를 하나 선택해서 table에 추가한다.
-            int idx = (int) (Math.random() * table.dishNum());
-            table.add(table.dishNames[idx]);
-
-            try { Thread.sleep(1); } catch (InterruptedException e) { }
+    public synchronized void withdraw(int money){ // synchronized 메서드로 동기화
+        if(balance >= money){
+            try{
+                Thread.sleep(1000);
+            }catch (InterruptedException e){}
+            balance-= money;
         }
     }
 }
-class Table1{
-    String[] dishNames ={ "donut", "donut", "burger"};
-    final int MAX_FOOD = 6;
 
-    private ArrayList<String> dishes = new ArrayList<>();
-    public void add(String dish){
-        // 테이블에 음식이 가득찼으면, 테이블에 음식을 추가하지 않는다.
-        if(dishes.size() >= MAX_FOOD) return;
-        dishes.add(dish);
-        System.out.println("Dishes : " + dishes.toString());
-    }
 
-    public boolean remove(String dishName){
-        // 저장된 요리와 일치하는 요리를 테이블에서 제거한다.
-        for(int i=0; i<dishes.size(); i++){
-            if(dishName.equals(dishes.get(i))){
-                dishes.remove(i);
-                return true;
-            }
+class RunnableEx22 implements Runnable {
+    Account2 acc = new Account2();
+    public void run() {
+        while(acc.getBalance()>0){
+            // 100, 200, 300중의 한 값을 임의로 선택해서 출금(withdraw)
+            int money = (int)(Math.random()*3+1)*100;
+            acc.withdraw(money);
+            System.out.println("balance:"+acc.getBalance());
         }
-        return false;
     }
-    public int dishNum(){ return dishNames.length; }
 }
-
