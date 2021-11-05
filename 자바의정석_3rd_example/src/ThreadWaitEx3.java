@@ -3,11 +3,11 @@ import java.util.ArrayList;
 // wait() & notify()
 public class ThreadWaitEx3 {
     public static void main(String[] args) throws Exception{
-        Table3 table = new Table3(); // 여러 쓰레드가 공유하는 객체
+        Table4 table = new Table4(); // 여러 쓰레드가 공유하는 객체
 
-        new Thread(new Cook3(table), "COOK1").start();
-        new Thread(new Customer3(table, "donut"), "CUST1").start();
-        new Thread(new Customer3(table, "burger"), "CUST2").start();
+        new Thread(new Cook4(table), "COOK1").start();
+        new Thread(new Customer4(table, "donut"), "CUST1").start();
+        new Thread(new Customer4(table, "burger"), "CUST2").start();
         Thread.sleep(2000);
         System.exit(0); // 프로그램 전체를 종료. (모든 쓰레드가 종료됨)
     }
@@ -15,10 +15,10 @@ public class ThreadWaitEx3 {
 
 
 class Customer3 implements Runnable{
-    private Table3 table;
+    private Table4 table;
     private String food;
 
-    Customer3(Table3 table, String food){
+    Customer3(Table4 table, String food){
         this.table = table;
         this.food = food;
     }
@@ -34,8 +34,8 @@ class Customer3 implements Runnable{
 }
 
 class Cook3 implements Runnable{
-    private Table3 table;
-    Cook3(Table3 table) { this.table = table; }
+    private Table4 table;
+    Cook3(Table4 table) { this.table = table; }
     public void run(){
         while(true) {
             int idx = (int) (Math.random() * table.dishNum());
