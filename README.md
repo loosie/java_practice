@@ -8,7 +8,7 @@
 
 ### 2. studyhalle 스터디
 백기선 개발자님이 진행하는 라이브 스터디 참여
-- 1주차 ~ 15주차 스터디 공부 내용은 [개발 블로그](https://loosie.tistory.com/116?category=964815) 에 업로드 
+- 1주차 ~ 15주차 스터디 공부 내용은 [개발 블로그](https://loosie.tistory.com/tag/livestudy) 에 업로드 
 - [whiteship/live-study](https://github.com/whiteship/live-study) 
 
 ### 3. 자바의 정석 1,2권
