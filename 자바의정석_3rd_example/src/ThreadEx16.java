@@ -1,37 +1,35 @@
 // suspend(), resume(), stop()
-public class ThreadEx17 {
+public class ThreadEx16 {
     public static void main(String[] args) throws Exception{
-        ThreadEx17_1 th1 = new ThreadEx17_1("*");
-        ThreadEx17_1 th2 = new ThreadEx17_1("**");
-        ThreadEx17_1 th3 = new ThreadEx17_1("***");
+        RunImplEx16 r1 = new RunImplEx16();
+        RunImplEx16 r2 = new RunImplEx16();
+        RunImplEx16 r3 = new RunImplEx16();
+        Thread th1 = new Thread(r1, "*");
+        Thread th2 = new Thread(r1, "**");
+        Thread th3 = new Thread(r1, "***");
         th1.start();
         th2.start();
         th3.start();
 
         try{
             Thread.sleep(2000);
-            th1.suspend();
+            r1.suspend();
             Thread.sleep(2000);
-            th2.suspend();
+            r2.suspend();
             Thread.sleep(3000);
-            th1.resume();
+            r1.resume();
             Thread.sleep(3000);
-            th1.stop();
-            th2.stop();
+            r1.stop();
+            r2.stop();
             Thread.sleep(2000);
-            th3.stop();
+            r3.stop();
         }catch (InterruptedException e){}
     }
 }
 
-class ThreadEx17_1 implements Runnable{
-    volatile boolean suspended = false;
-    volatile boolean stopped = false;
-
-    Thread th;
-    ThreadEx17_1(String name){
-        th = new Thread(this, name); // Thread(Runnable r, String name)
-    }
+class RunImplEx16 implements Runnable{
+    boolean suspended = false;
+    boolean stopped = false;
 
     public void run(){
         while (!stopped){
@@ -48,5 +46,4 @@ class ThreadEx17_1 implements Runnable{
     public void suspend(){ suspended = true; }
     public void stop(){ stopped = true; }
     public void resume() { suspended = false; }
-    public void start()  { th.start(); }
 }
