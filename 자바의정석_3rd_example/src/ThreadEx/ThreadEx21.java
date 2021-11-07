@@ -1,7 +1,9 @@
+package ThreadEx;
+
 // join()
-public class ThreadEx20 {
+public class ThreadEx21 {
     public static void main(String[] args){
-        ThreadEx20_1 gc = new ThreadEx20_1();
+        ThreadEx21_1 gc = new ThreadEx21_1();
         gc.setDaemon(true);
         gc.start();
 
@@ -25,7 +27,7 @@ public class ThreadEx20 {
     }
 }
 
-class ThreadEx20_1 extends Thread{
+class ThreadEx21_1 extends Thread{
     final static int MAX_MEMORY = 1000;
     int usedMemory = 0;
 

@@ -1,24 +1,26 @@
+package GenericEx;
+
 import java.util.ArrayList;
 
 class Fruit {
     public String toString() {
-        return "Fruit";
+        return "GenericEx.Fruit";
     }
 }
 class Apple extends Fruit {
     public String toString() {
-        return "Apple";
+        return "GenericEx.Apple";
     }
 }
 class Grape extends Fruit {
     public String toString() {
-        return "Grape";
+        return "GenericEx.Grape";
     }
 }
 class Juice {
     String name;
     Juice(String name) {
-        this.name = name + "Juice";
+        this.name = name + "GenericEx.Juice";
     }
     public String toString() {
         return name;

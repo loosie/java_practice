@@ -1,3 +1,5 @@
+package ThreadEx;
+
 import java.util.ArrayList;
 
 public class ThreadWaitEx1 {

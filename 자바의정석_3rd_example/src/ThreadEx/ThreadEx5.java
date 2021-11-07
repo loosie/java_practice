@@ -1,3 +1,5 @@
+package ThreadEx;
+
 public class ThreadEx5 {
     static long startTime = 0;
     public static void main(String[] args) {

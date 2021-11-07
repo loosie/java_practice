@@ -1,3 +1,5 @@
+package ThreadEx;
+
 // yield()
 public class ThreadEx18 {
     public static void main(String[] args) throws Exception{

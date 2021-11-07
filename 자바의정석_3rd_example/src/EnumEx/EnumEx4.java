@@ -1,3 +1,5 @@
+package EnumEx;
+
 abstract class MyEnum<T extends  MyEnum<T>> implements Comparable<T>{
     static int id = 0;
     int oridinal;

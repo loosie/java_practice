@@ -1,3 +1,5 @@
+package ThreadEx;
+
 public class ThreadEx22 {
     public static void main(String[] args){
         Runnable r = new RunnableEx22();

@@ -1,10 +1,12 @@
+package ThreadEx;
+
 import javax.swing.*;
 
 // interrupt()
 public class ThreadEx13 {
     public static void main(String[] args) {
 //        ThreadEx13_1 th1 = new ThreadEx13_1();
-//        ThreadEx13_2 th1 = new ThreadEx13_2();
+//        ThreadEx.ThreadEx13_2 th1 = new ThreadEx.ThreadEx13_2();
         ThreadEx13_3 th1 = new ThreadEx13_3();
         th1.start();
 

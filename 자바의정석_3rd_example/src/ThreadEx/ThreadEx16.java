@@ -1,3 +1,5 @@
+package ThreadEx;
+
 // suspend(), resume(), stop()
 public class ThreadEx16 {
     public static void main(String[] args) throws Exception{
