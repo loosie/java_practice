@@ -1,7 +1,7 @@
 package StreamEx;
 
 
-// 최종 연산 - partitioningBy()
+// 최종 연산 - collect- partitioningBy()
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
