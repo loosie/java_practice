@@ -80,6 +80,34 @@
     - DriverManager.getConnection이 서비스 접근 API 역할
     - Driver가 서비스 제공자 인터페이스 역할
 
+#### JDBC 예제
+Class.forName으로 드라이버 이름을 호출하여 DriverManager 객체가 로드된다.
+1. Class.forName(driverName); 메소드에 의해 전달되는 "com.mysql.jdbc.Driver"가 메모리에 로드된다. 
+2. Class.forName("com.mysql.jdbc.Driver");가 실행되면 JDBC Driver가 동적 로딩 된다.
+3. 2번에서 Driver가 로딩되면서 [DriverManager.registerDriver()](http://www.docjar.com/html/api/com/mysql/jdbc/Driver.java.html)의 메소드가 실행되어 DriverManger도 자동으로 로딩된다.
+4. 등록한 JDBC Driver는 DB Connction을 생성하는 시점에 사용되어진다.
+~~~
+public static void main(String[] args) {
+	String driverName = "com.mysql.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/test";
+	String user = "root";
+	String password = "1234";
+    
+	try {
+		Class.forName(driverName);
+
+        // [서비스 인터페이스 : Connection] <---getConnection()--- [서비스 접근 API : DriverManager.getConnection]
+		Connection connection = DriverManager.getConnection(url, user, password);
+
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+}
+~~~
+
+
 서비스 제공자 프레임워크 패턴에는 여러 변형이 있다. 
 
 - 브리지 패턴 : 서비스 접근 API는 공급자가 제공하는 것보다 더 풍부한 서비스 인터페이스를 클라이언트에 반환할 수 있다.
