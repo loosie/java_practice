@@ -13,4 +13,3 @@ public class Main {
         System.out.println("cal = " + cal);
     }
 }
-    effective java #item1 - 사전공부 (type-types, enumset)
