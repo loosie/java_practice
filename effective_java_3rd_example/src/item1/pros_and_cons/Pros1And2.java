@@ -1,9 +1,9 @@
-package item1.ProsAndCons;
+package item1.pros_and_cons;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static item1.ProsAndCons.Type.*;
+import static item1.pros_and_cons.Type.*;
 
 enum Type{
     NORMAL, ELECTRONIC, HYBRID, STEEL;

@@ -1,4 +1,4 @@
-package item1.ProsAndCons;
+package item1.pros_and_cons;
 
 import java.util.*;
 

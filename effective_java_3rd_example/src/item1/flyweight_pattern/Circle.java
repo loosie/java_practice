@@ -1,4 +1,4 @@
-package item1.flyweightPattern;
+package item1.flyweight_pattern;
 
 public class Circle implements Shape {
     private Color color;

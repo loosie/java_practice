@@ -1,7 +1,7 @@
-package item1.flyweightPattern;
+package item1.flyweight_pattern;
 
 
-import static item1.flyweightPattern.Color.*;
+import static item1.flyweight_pattern.Color.*;
 
 public class Main {
     public static void main(String[] args) {

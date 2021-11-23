@@ -1,4 +1,4 @@
-package item1.ProsAndCons;
+package item1.pros_and_cons;
 
 
 // 장점 5. 정적 팩토리 메서드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.
@@ -16,7 +16,7 @@ class StaticFactory{
     static StaticFactory getNewInstance(){
         StaticFactory tmp = null;
         try{
-            Class<?> childClass = Class.forName("item1.ProsAndCons.StaticFactoryChild");
+            Class<?> childClass = Class.forName("item1.pros_and_cons.StaticFactoryChild");
             tmp = (StaticFactory)childClass.getDeclaredConstructor().newInstance();
         }catch (Exception e){
             throw new RuntimeException(e);

@@ -116,4 +116,4 @@ public static void main(String[] args) {
 
 ---
 
-💡 본문(ProsAndCons)은 [개발 블로그](https://loosie.tistory.com/569)에 있습니다.
+💡 본문(pros_and_cons)은 [개발 블로그](https://loosie.tistory.com/569)에 있습니다.

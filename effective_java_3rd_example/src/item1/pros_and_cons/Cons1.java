@@ -1,6 +1,4 @@
-package item1.ProsAndCons;
-
-import java.util.Collections;
+package item1.pros_and_cons;
 
 // error. public 디폴트 생성자 필요
 // class Poo extends Factory{ }
