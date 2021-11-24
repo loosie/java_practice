@@ -22,3 +22,8 @@
 ## 4. Effective Java 3E
 - 공부 - ing
 - [개발 블로그](https://loosie.tistory.com/category/Dot%20OOP%20%E2%88%99%20Java/Effiective%20Java)
+
+<br>
+
+--- 
+최종 수정 2021.11.24 © loosie
