@@ -42,6 +42,8 @@ InputStreamReader를 어댑터로 사용하여 System을 읽어서 BufferedReade
 ## 어댑터 예제
 - MP3, MP4, MKV 확장자를 재생하는 소스 코드 ([참고](https://www.tutorialspoint.com/design_pattern/adapter_pattern.htm))
 
+
+
 #### 시나리오
 - MediaPlayer 인터페이스와 이를 구현한 구현체 AudioPlayer가 있다. AudioPlayer는 기본값으로 MP3파일이 실행 가능하다.
 - AdvancedMediaPlayer 인터페이스와 이 구현체는 MP4와 MKV 파일 실행이 가능하다고 한다.
@@ -51,6 +53,7 @@ InputStreamReader를 어댑터로 사용하여 System을 읽어서 BufferedReade
     2. 그리고 추가 확장자 파일 사용을 위해 AdvancedMediaPlayer 객체를 주입하여 사용한다.   
 - AudioPlayer는 추가로 원하는 형식(MKV, MP4)을 재생할 수 있는 실제 클래스(AdvancedMediaPlayer)를 모른채 MediaAdapter를 통해서만 실행할 수 있게 된다.
 
+<img width="608" alt="스크린샷 2021-12-01 오전 12 08 56" src="https://user-images.githubusercontent.com/54282927/144072974-dbcd66be-312e-41e2-9f35-6c6a64f870f3.png">
 
 
 
