@@ -1,8 +1,5 @@
 package item6.adapter_pattern;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 public class Main {
 	public static void main(String[] args) {
 		AudioPlayer player = new AudioPlayer();
