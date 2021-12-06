@@ -14,15 +14,19 @@ finalizer와 cleaner는 즉시 수행된다는 보장이 없다. 객체에 접�
 - 따라서 상태를 영구적으로 수정하는 작업에서는 절대 finalizer니 cleaner에 의존해서는 안 된다.
 - System.gc나 System.runFinalization에 현혹되지 말자.
 
+<br>
 
 ### 2.finalizer 동작 중 발생한 예외는 무시되며, 처리할 작업이 남았더라도 그 순간 종료된다.
 - 잡지 못한 예외 때문에 해당 객체는 자칫 마무리가 덜 된 상태로 남을 수 있다. 그리고 다른 스레드가 이처럼 훼손된 객체를 사용하려 한다면 어떻게 동작할지 예측할 수 없다.
 - 그나마 cleaner를 사용하는 라이브러리는 자신의 스레드를 통제하기 때문에 이러한 문제가 발생하지 않는다.
 
+<br>
+
 ### 3. finalizer와 cleaner는 심각한 성능 문제도 동반한다.
 - 간단한 AutoCloseable 객체를 생성하고 가비지 컬렉터가 수거하기까지 12ns가 걸린 반면(try-with-resources로 자신을 닫도록했다,) finalizer를 사용하면 약 50배 정도 차이가 나는 500ns가 걸렸고, cleaner도 비슷하게 걸렸다고 한다.
 - 안정망 형태로 사용하면 훨씬 빨라진다. 약 66ns정도로 5배 정도만 느려진다.
 
+<br>
 
 ### 4. finalizer를 사용한 클래스는 finalizer 공격에 노출되어 심각한 보안 문제를 일으킬 수도 있다.
 - finalizer의 공격 원리는 간단하다. 생성자나 직렬화 과정(readObject와 readResolve)에서 예외가 발생하면, 이 생성되다 만 객체에서 악의적인 하위 클래스의 finalizer가 수행될 수 있게 된다.
@@ -32,7 +36,7 @@ finalizer와 cleaner는 즉시 수행된다는 보장이 없다. 객체에 접�
 이러한 공격은 끔직한 결과를 초래한다.
 - final 클래스들은 그 누구도 하위 클래스를 만들 수 없으니 이 공격에 안전하다.
 - final이 아닌 클래스를 finalizer 공격으로부터 방어하려면 아무 일도 하지 않는 finalize 메서드를 만들고 final을 선언하자.
-- finalize 공격 예제는 finalize_attack에 있습니다.
+- finalize 공격 예제는 [finalize_attack](https://github.com/loosie/java_practice/tree/master/effective_java_3rd_example/src/item8/finalize_attack)에 있습니다.
 
 <br>
 
@@ -45,6 +49,8 @@ finalizer와 cleaner는 즉시 수행된다는 보장이 없다. 객체에 접�
 ## finalizer와 cleaner도 쓰일 구석이 있긴 있다.
 ### 1. 자원의 소유자가 close메서드를 호출하지 않는 것에 대비한 안정만 역할로 사용하자.
 - cleaner나 finalizer가 즉시 (혹은 끝까지) 호출되리라는 보장은 없지만,  클라이언트가 하지 않은 자원 회수를 늦게라도 해주는 것이 아예 안하는 것보다는 낫다. 물론 이런 finalizer를 작성할 때는 그만한 값어치가 있는지 심사숙고하자.
+
+<br>
 
 ### 2. 네이티브 피어(native peer)와 연결된 객체에 활용하자.
 - 네이티브 피어란 일반 자바 객체가 네이브트 메서드를 통해 기능을 위임한 네이티브 객체를 말한다. 네이티브 피어는 자바 객체가 아니니 가비지 컬렉터는 그 존재를 알지 못한다. 그 결과 자바 피어를 회수할 때 네이티브 객체까지 회수하지 못한다.
