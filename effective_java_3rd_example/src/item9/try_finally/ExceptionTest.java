@@ -19,11 +19,10 @@ public class ExceptionTest {
 			}
 			return br.readLine();
 		} catch (Exception e){
-			br.close();
-			br.readLine(); // 두 번째 예외
 			return e.getMessage();
 		} finally{
 			br.close();
+			br.readLine(); // 두 번째 예외
 		}
 	}
 }
