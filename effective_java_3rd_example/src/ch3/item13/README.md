@@ -78,16 +78,6 @@ public final class PhoneNumber implements Cloneable {
 
 ### 가변 상태를 참조하는 클래스용 clone 메서드
 위의 구현은 클래스가 가변 객체를 참조하는 순간 문제가 발생한다. Stack 클래스를 예로 들어보자
-
-<br>
-
-단순 super.clone을 하면 Stack 인스턴스의 size 필드는 올바른 값을 갖겠지만, elements 필드는 원본 Stack 인스턴스와 똑같은 배열을 참조할 것이다.
-- 원본이나 복제본 중 하나를 수정하면 다른 하나도 수정되어 불변식을 해친다는 얘기이다.
-- 따라서 프로그램이 이상하게 움직이거나 NullPointerException을 던질 것이다.
-
-Stack 클래스의 하나뿐인 생성자를 호출한다면 이러한 상황은 절대 일어나지 않는다. clone 메서드는 사실상 생성자와 같은 효과를 낸다. 즉, clone은 원본 객체에 아무런 해를 끼치지 않는 동시에 복제된 객체의 불변식을 보장해야 한다.
-
-그래서 Stack의 clone 메서드는 제대로 동작하려면 스택 내부 정보를 복해야 하는데, 가장 쉬운 방법은 elements 배열의 clone을 재귀적으로 호출해주는 것이다.
 ~~~
 public class Stack {
    private Object[] elements;
@@ -128,6 +118,28 @@ public class Stack {
           throw new AssertionError();
        }
     }
+}
+~~~
+
+<br>
+
+단순 super.clone을 하면 Stack 인스턴스의 size 필드는 올바른 값을 갖겠지만, elements 필드는 원본 Stack 인스턴스와 똑같은 배열을 참조할 것이다.
+- 원본이나 복제본 중 하나를 수정하면 다른 하나도 수정되어 불변식을 해친다는 얘기이다.
+- 따라서 프로그램이 이상하게 움직이거나 NullPointerException을 던질 것이다.
+
+Stack 클래스의 하나뿐인 생성자를 호출한다면 이러한 상황은 절대 일어나지 않는다. clone 메서드는 사실상 생성자와 같은 효과를 낸다. 즉, clone은 원본 객체에 아무런 해를 끼치지 않는 동시에 복제된 객체의 불변식을 보장해야 한다.
+
+그래서 Stack의 clone 메서드는 제대로 동작하려면 스택 내부 정보를 복해야 하는데, 가장 쉬운 방법은 elements 배열의 clone을 재귀적으로 호출해주는 것이다.
+~~~
+// 가변 상태를 참조하는 클래스용 clone 메서드
+@Override public Stack clone() {
+   try{
+      Stack result = (Stack) super.clone();
+      result.elements = elements.clone();
+      return result;
+   }catch (CloneNotSupportedException e){
+      throw new AssertionError();
+   }
 }
 ~~~
 
