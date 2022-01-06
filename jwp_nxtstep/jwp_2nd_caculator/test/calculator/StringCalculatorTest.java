@@ -29,4 +29,10 @@ class StringCalculatorTest {
 		String[] inputs = {":2,4", "::6"};
 		Arrays.stream(inputs).forEach(input -> assertEquals(cal.add(input), 6));
 	}
+
+	@Test
+	public void custom_add(){
+		String[] inputs = {"//@\n2@4", "//;\n1;2;3"};
+		Arrays.stream(inputs).forEach(input -> assertEquals(cal.add(input), 6));
+	}
 }
