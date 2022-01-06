@@ -32,7 +32,7 @@ class StringCalculatorTest {
 
 	@Test
 	public void custom_add(){
-		String[] inputs = {"//@\n2@4", "//;\n1;2;3"};
+		String[] inputs = {"//@\n2@4", "//;\n1;2;3", "//;\n1;2:3"};
 		Arrays.stream(inputs).forEach(input -> assertEquals(cal.add(input), 6));
 	}
 }
