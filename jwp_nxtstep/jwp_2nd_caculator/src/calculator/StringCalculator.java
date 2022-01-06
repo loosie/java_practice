@@ -1,9 +1,13 @@
 package calculator;
 
+import java.util.stream.Stream;
 
 public class StringCalculator {
-
+	private final String BASIC_REGEX = ",|:";
 	int add(String text){
-		return 0;
+		String[] numbers = text.split(BASIC_REGEX);
+
+		return Stream.of(numbers)
+			.mapToInt(i -> Integer.parseInt(i)).sum();
 	}
 }
