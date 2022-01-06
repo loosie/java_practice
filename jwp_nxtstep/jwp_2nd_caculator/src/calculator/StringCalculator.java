@@ -20,21 +20,37 @@ public class StringCalculator {
 	}
 
 	int add(String text){
+		text = getCustomPattern(text);
+		String regex = String.join(DIVISION, regexList);
+
+		numbers = Stream.of(text.split(regex))
+			.map(i -> isZeroOrNum(i)).collect(toList());
+
+		return numbers.stream().mapToInt(i -> toInt(i)).sum();
+	}
+
+	private String getCustomPattern(String text) {
 		Matcher m = CUSTOM_REGEX_PATTERN.matcher(text);
 		if(m.find()){
 			regexList.add(m.group(1));
 			text = m.group(2);
 		}
+		return text;
+	}
 
-		String regex = String.join(DIVISION, regexList);
-		numbers = Stream.of(text.split(regex))
-			.map(i -> {
-				if(i.isEmpty() || i.equals("")){
-					return "0";
-				}else return i;
-			}).collect(toList());
+	private String isZeroOrNum(String value){
+		if(value.isEmpty() || value.equals("")){
+			return "0";
+		}
+		return value;
+	}
 
-		return numbers.stream().mapToInt(i -> Integer.parseInt(i)).sum();
+	private int toInt(String value){
+		int num = Integer.parseInt(value);
+		if(num < 0) {
+			throw new RuntimeException();
+		}
+		return num;
 	}
 
 }
