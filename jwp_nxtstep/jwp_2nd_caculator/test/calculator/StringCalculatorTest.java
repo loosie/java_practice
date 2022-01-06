@@ -35,4 +35,12 @@ class StringCalculatorTest {
 		String[] inputs = {"//@\n2@4", "//;\n1;2;3", "//;\n1;2:3"};
 		Arrays.stream(inputs).forEach(input -> assertEquals(cal.add(input), 6));
 	}
+
+	@Test
+	public void exception_test() throws RuntimeException{
+		String input = "-1";
+		assertThrows(RuntimeException.class, () -> {
+			cal.add(input);
+		});
+	}
 }
