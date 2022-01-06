@@ -24,6 +24,7 @@ class StringCalculatorTest {
 
 	@Test
 	public void emptyString_add(){
+		assertEquals(cal.add(null), 0);
 		assertEquals(cal.add(""), 0);
 
 		String[] inputs = {":2,4", "::6"};

@@ -15,8 +15,8 @@ public class StringCalculator {
 	StringCalculator(){
 		numbers = new ArrayList<>();
 		regexList = new ArrayList<>();
-		regexList.add(",");
-		regexList.add(":");
+		regexList.add(COMMA);
+		regexList.add(COLON);
 	}
 
 	int add(String text){
@@ -39,8 +39,8 @@ public class StringCalculator {
 	}
 
 	private String isZeroOrNum(String value){
-		if(value.isEmpty() || value.equals("")){
-			return "0";
+		if(value.isEmpty() || value == null){
+			return ZERO;
 		}
 		return value;
 	}
