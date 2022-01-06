@@ -21,4 +21,12 @@ class StringCalculatorTest {
 		String[] inputs = {"1:2,3", "1,2,3", "1:2:3"};
 		Arrays.stream(inputs).forEach(input -> assertEquals(cal.add(input), 6));
 	}
+
+	@Test
+	public void emptyString_add(){
+		assertEquals(cal.add(""), 0);
+
+		String[] inputs = {":2,4", "::6"};
+		Arrays.stream(inputs).forEach(input -> assertEquals(cal.add(input), 6));
+	}
 }
