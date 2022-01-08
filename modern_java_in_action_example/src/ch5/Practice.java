@@ -5,9 +5,7 @@ import static java.util.stream.Collectors.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class Practice {
 	public static void main(String[] args) {
