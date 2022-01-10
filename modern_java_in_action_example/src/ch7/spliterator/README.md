@@ -22,3 +22,16 @@ estimateSize 메서드
 characteristics 메서드
 -  Spliterator 자체의 특성 집합을 포함하는 int를 반환한다.
 - ORDERED, DISTINCT, SORTED, SIZED, NONNULL, IMMUTABLE, CONCURRENT, SUBSIZED
+
+<br>
+ 
+## 분할 과정
+Step1. 첫 번째 Spliterator에 trySplit를 호출하면 두 번째 Spliterator가 생성된다.
+
+Step2. 두 개의 Spliterator에 다시 trySplit를 호출하면 네 개의 Spliterator가 생성된다.
+
+Step3. trySplit의 결과가 null이 될 때까지 반복한다.
+
+Step4. 재귀 분할 과정이 종료된다.
+
+<img width="659" alt="스크린샷 2022-01-10 오후 6 13 11" src="https://user-images.githubusercontent.com/54282927/148741730-957c221b-6643-4fcf-a4bd-f1603489db51.png">
