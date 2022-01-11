@@ -2,15 +2,10 @@ package ch7;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Spliterator;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ch7.forkjoin.ForkJoinSumCalculator;
@@ -34,9 +29,10 @@ public class Practice {
 	@Test
 	void 단어수_세기(){
 		String[] word = line.split(" ");
-		stream = line.chars().mapToObj(c -> (char)c);
 
+		stream = line.chars().mapToObj(c -> (char)c);
 		System.out.println("word = " + word.length);
+
 		assertEquals(countWords(stream), word.length);
 	}
 
@@ -47,6 +43,7 @@ public class Practice {
 
 		String[] word = line.split(" ");
 		System.out.println("word = " + word.length);
+
 		assertEquals(countWords(stream), word.length);
 	}
 

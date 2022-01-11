@@ -13,7 +13,6 @@ public class WordCounterSpliterator implements Spliterator<Character> {
 
 	@Override public boolean tryAdvance(Consumer<? super Character> action) {
 		action.accept(string.charAt(currentChar++)); // 현재 문자를 소비한다.
-		System.out.println(currentChar);
 		return currentChar < string.length();// 소비할 문자가 남아있으면 true를 반환한다.
 	}
 
@@ -30,7 +29,7 @@ public class WordCounterSpliterator implements Spliterator<Character> {
 				WordCounterSpliterator spliterator = new WordCounterSpliterator(
 					string.substring(currentChar, splitPos));
 				currentChar = splitPos; // 이 WordCounterSpliterator의 시작위치를 분할 위치로 설정한다.
-				System.out.println("# "+splitPos +" - " + spliterator);
+				// System.out.println("# "+splitPos +" - " + this +" vs \n"+spliterator);
 				return spliterator; // 공백을 찾았고 문자열을 분리했으므로 루프를 종료한다.
 			}
 		}

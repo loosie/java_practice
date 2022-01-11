@@ -11,9 +11,23 @@ public class WordCounter {
 
 	public WordCounter accumulate(Character c){
 		if(Character.isWhitespace(c)){
-			return lastSpace ? this : new WordCounter(counter, true);
+			if(lastSpace){
+				System.out.print(c);
+				return this;
+			}else{
+				System.out.println("\nfind whitespace" + (counter));
+				return new WordCounter(counter, true);
+			}
+			// return lastSpace ? this : new WordCounter(counter, true);
 		}else { // 공백을 만나면 지금까지 탐색한 문자를 단어로 간주하여 단어 수 증가
-			return lastSpace ? new WordCounter(counter+1, false) : this;
+			if(lastSpace){
+				System.out.print(c +" ");
+				return new WordCounter(counter+1, false);
+			}else{
+				System.out.print("" +c);
+				return this;
+			}
+			// return lastSpace ? new WordCounter(counter+1, false) : this;
 		}
 	}
 
@@ -24,6 +38,4 @@ public class WordCounter {
 	public int getCounter(){
 		return counter;
 	}
-
-
 }
