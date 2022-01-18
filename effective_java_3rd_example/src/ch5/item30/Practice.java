@@ -1,4 +1,4 @@
-package ch5.item30.item29;
+package ch5.item30;
 
 import java.util.HashSet;
 import java.util.Set;

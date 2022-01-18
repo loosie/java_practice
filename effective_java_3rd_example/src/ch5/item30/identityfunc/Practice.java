@@ -1,8 +1,7 @@
-package ch5.item30.item29.identityfunc;
+package ch5.item30.identityfunc;
 
 import java.util.Collection;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.function.UnaryOperator;
 
 public class Practice {
