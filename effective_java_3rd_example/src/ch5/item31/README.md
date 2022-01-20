@@ -1,11 +1,11 @@
 # 31. 한정적 와일드카드를 사용해 API 유연성을 높이라
 아이템 28에서 얘기했듯 매개변수화 타입은 불공변(invariant)이다. 즉, 서로 다른 타입 Type1과 Type2가 있을 때 List<Type1>은 List<Type2>의 하위 타입도 상위 타입도 아니다. 직관적이지 않겠지만 List<String>은 List<Object>의 하위 타입이 아니라는 뜻인데, 곰곰이 따져보면 사실 이쪽이 말이 된다.
-- List<Object>에는 어떤 객체든 넣을 수 있지만 List<String>에는 문자열만 넣을 수 있다. 즉, List<String>은 List<Object>가 하는 일을 제대로 수해하지 못하니 하위 타입이 될 수 없다.(리스코프 치환 원칙 위배)
-
+	
+List<Object>에는 어떤 객체든 넣을 수 있지만 List<String>에는 문자열만 넣을 수 있다. 즉, List<String>은 List<Object>가 하는 일을 제대로 수해하지 못하니 하위 타입이 될 수 없다.(리스코프 치환 원칙 위배)	
+	
 <br>
 
 ## PECS 공식
-
 다음 공식을 워외두면 어떤 와일드카드 타입을 써야하는지 기억하는 데 도움이 된다. 나프탈린(Naftalin)과 와들러(Wadler)는 겟풋원칙(Get and Put Principle)으로 부른다.
 
 #### 펙스(PECS): producer-extends, consumer-super
