@@ -21,6 +21,8 @@ public class Favorites {
 }
 ~~~
 
+<br>
+	
 그리고 다음은 앞의 Favorites 클래스를 사용하고 있는 예시다. 즐겨 찾는 String, Integer, Class 인스턴스를 저장, 검색, 출력하고 있다.
 ~~~
 // [ 타입 안전 이종 컨테이너 패턴 - 클라이언트 ]
@@ -38,6 +40,7 @@ public static void main(String[] args) {
 }
 ~~~
 
+<br>
 
 기대한 대로 이 프로그램은 “Java cafebabe Favorites”를 출력한다. Favorites 인스턴스는 타입 안전하다. String을 요청했는데 Integer를 반환하는 일은 절대 없다. 또한 모든 키의 타입은 제각각이라, 일반적인 맵과 달리 여러 가지 타입의 원소를 담을 수 있다. 따라서 Favorites는 타입 안전 이종 컨테이너라 할 만 하다.
 
@@ -129,6 +132,8 @@ Collections에는 이러한 방식을 적용한 checkedSet, checkedList, checked
 
 List<String>과 List<Integer>는 List.class라는 같은 Class 객체를 공유하므로, 만약 List<String>.class와 List<Integer>.class를 허용해서 둘 다 똑같은 타입의 객체 참조를 반환한다면 Favorites 객체의 내부는 아수라장이 될 것이다. 이 두 번째 제약에 대한 완벽히 만족스러운 우회로는 없다.
 
+<br>
+	
 ---
 
 ### 슈퍼 타입 토큰
