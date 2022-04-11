@@ -54,7 +54,6 @@ class FactorialToInt {
 	public static int factorial(final int number){
 		return factorialTailRec(1, number).invoke();
 	}
-
 }
 
 class FactorialToBigInteger {
@@ -94,6 +93,7 @@ public class Main {
 
 
 		try{
+			System.out.println(String.format("%.30s...", FactorialToInt.factorial(20000)));
 			System.out.println(String.format("%.30s...", FactorialToBigInteger.factorial(TWENTY_K)));
 		}catch (VirtualMachineError ex){
 			System.out.println(ex);
