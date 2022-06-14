@@ -10,8 +10,12 @@ public class Coin {
 		// private 생성자로 선언하여 상속을 방지한다.
 	}
 
-	// 정적 블럭 초기화
+	// 정적 블럭 게으른 초기화
 	public static Coin getInstance(){
+		try{
+			Thread.sleep(1000);
+		}catch (InterruptedException ex){
+		}
 		if(instance == null){
 			instance = new Coin();
 		}
@@ -29,10 +33,6 @@ public class Coin {
 	// insertCoin이 현재 코인보다 적거나 같은 경우에만 동작한다.
 	public void deductCoin(int insertCoin){
 		if(coin >= insertCoin){
-			try{
-				Thread.sleep(1000);
-			}catch (InterruptedException ex){
-			}
 			coin -= insertCoin;
 		}
 	}
