@@ -4,8 +4,11 @@ public class Attacker implements Runnable{
 
 	@Override
 	public void run(){
-		Coin coin = Coin.getInstance();
+		// Coin coin = Coin.getInstance();
+		EnumCoin coin = EnumCoin.ENUM_COIN;
+
 		System.out.println("[" + Thread.currentThread().getName() + "] get Coin Instance : " + coin);
+		// System.out.println("time = " + (long)System.currentTimeMillis());
 	}
 
 	/**
@@ -16,9 +19,18 @@ public class Attacker implements Runnable{
 	public static void main(String[] args) {
 		Runnable r = new Attacker();
 
+		// System.out.println("start = " + (long)System.currentTimeMillis());
 		int t = 10;
 		while(t-- > 0){
 			new Thread(r).start();
 		}
+
+		/**
+		 * 동기화 범위에 따른 실행시간 측정 결과
+		 *   1. Lazy Initialization with synchronized: 10049ms
+		 *   2. Lazy Initialization, Double Checking Locking: 1041ms
+		 *   3. Enum Class: 40ms
+		 */
+
 	}
 }

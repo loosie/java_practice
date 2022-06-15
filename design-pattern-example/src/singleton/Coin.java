@@ -14,10 +14,16 @@ public class Coin {
 	public static Coin getInstance(){
 		try{
 			Thread.sleep(1000);
-		}catch (InterruptedException ex){
-		}
-		if(instance == null){
-			instance = new Coin();
+		}catch (InterruptedException ex){}
+
+		// Double check locking
+		if(instance == null) {
+			// 쓰레드들 대기 공간 { }
+			synchronized (Coin.class) {
+				if (instance == null) { // 가장 먼저 점유한 하나의 쓰레드만 해당 if문 실행
+					instance = new Coin();
+				}
+			}
 		}
 		return instance;
 	}
